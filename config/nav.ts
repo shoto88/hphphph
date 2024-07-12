@@ -10,3 +10,4 @@ export const navConfig: NavConfig = {
   {title: 'よくある質問', href: '#'},
 ]
 }
+
