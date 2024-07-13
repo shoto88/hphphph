@@ -1,12 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { ServiceCategory } from '@/types';
 import { servicesConfig } from '@/config/services';
 
 export default function ServicesPage() {
   return (
     <div className="services-page">
-      {servicesConfig.map((category: ServiceCategory) => (
+      {servicesConfig.map((category) => (
         <div key={category.slug} className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">{category.name}</h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

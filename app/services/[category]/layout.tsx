@@ -1,6 +1,5 @@
-import { servicesConfig } from '@/config/services';
 import React from 'react';
-
+import { servicesConfig } from '@/config/services';
 
 export default function CategoryLayout({
   children,

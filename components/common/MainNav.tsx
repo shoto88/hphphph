@@ -2,8 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { MenuItem } from '@/types';
 
-
-
 interface MainNavProps {
   items: MenuItem[];
 }
