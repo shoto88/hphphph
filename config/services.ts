@@ -5,7 +5,7 @@ export const servicesConfig: ServiceCategory[] = [
     name: '保険診療',
     slug: 'insurance',
     services: [
-      { name: '頭痛', slug: 'headache', description: '頭痛の診断と治療' },
+      { name: 'Headache', slug: 'headache', description: '頭痛の診断と治療' },
       { name: '婦人科', slug: 'gynecology', description: '婦人科の診療' },
       { name: '内科', slug: 'internal-medicine', description: '内科全般の診療' },
       { name: '漢方内科', slug: 'kampo-medicine', description: '漢方薬による治療' },

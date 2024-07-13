@@ -1,15 +1,26 @@
 import React from 'react';
-import fs from 'fs/promises';
-import path from 'path';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { servicesConfig } from '@/config/services';
-import { SectionTitle } from '@/components/mdx-components';
+import dynamic from 'next/dynamic';
 
 interface ServicePageProps {
   params: {
     category: string;
     service: string;
+  };
+}
+
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const { category, service } = params;
+  const categoryConfig = servicesConfig.find(c => c.slug === category);
+  const serviceConfig = categoryConfig?.services.find(s => s.slug === service);
+  
+  if (!serviceConfig) return {};
+  
+  return {
+    title: `${serviceConfig.name} | 大濠パーククリニック`,
+    description: serviceConfig.description,
   };
 }
 
@@ -19,31 +30,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const serviceConfig = categoryConfig?.services.find(s => s.slug === service);
 
   if (!serviceConfig) {
-    return <div>サービスが見つかりません</div>;
+    notFound();
   }
 
-  let content;
-  try {
-    const filePath = path.join(process.cwd(), 'content', 'services', `${service}.md`);
-    content = await fs.readFile(filePath, 'utf8');
-  } catch (error) {
-    console.error('Error reading markdown file:', error);
-    return <div>コンテンツの読み込みに失敗しました</div>;
-  }
-
-  return (
-    <div className="service-page">
-      <h1 className="text-3xl font-bold mb-6">{serviceConfig.name}</h1>
-      <MDXRemote 
-        source={content} 
-        components={{
-          SectionTitle,
-          Callout,
-          SymptomList,
-          TreatmentMethod,
-          ImageWithCaption
-        }} 
-      />
-    </div>
+  const ServiceComponent = dynamic(
+    () => import(`@/components/services/${serviceConfig.slug.charAt(0).toUpperCase() + serviceConfig.slug.slice(1)}Service`),
+    {
+      loading: () => <p>Loading...</p>,
+      ssr: true,
+    }
   );
+
+  return <ServiceComponent />;
 }
