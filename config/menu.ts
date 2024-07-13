@@ -1,20 +1,11 @@
-export const menuConfig = {
-    '保険診療': [
-      '頭痛',
-      '婦人科',
-      '内科',
-      '漢方内科',
-      '交通事故リハビリ科',
-      '睡眠時無呼吸症候群(SAS) CPAP療法',
-      'ざ瘡（ニキビ）',
-      '禁煙'
-    ],
-    '自由診療': [
-      '美容皮膚科',
-      '人間ドック健康診断',
-      '薄毛・男・女',
-      '肥満（ダイエット）',
-      '点滴 注射',
-      'ED'
-    ]
-  };
+import { servicesConfig } from './services';
+
+export const menuConfig = servicesConfig.map(category => ({
+  name: category.name,
+  slug: category.slug,
+  services: category.services.map(service => ({
+    name: service.name,
+    slug: service.slug,
+    description: service.description
+  }))
+}));

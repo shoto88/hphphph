@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { NavItem } from '@/types';
+import { MenuItem } from '@/types';
+
 
 
 interface MainNavProps {
-  items: NavItem[];
+  items: MenuItem[];
 }
 
 const MainNav: React.FC<MainNavProps> = ({ items }) => (
@@ -13,7 +14,7 @@ const MainNav: React.FC<MainNavProps> = ({ items }) => (
       {items.map((item) => (
         <li key={item.href}>
           <Link href={item.href} className="hover:underline">
-            {item.title}
+            {item.label}
           </Link>
         </li>
       ))}

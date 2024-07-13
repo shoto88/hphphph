@@ -1,13 +1,12 @@
-import { NavConfig } from "@/types";
+import { NavConfig } from '@/types';
 
 export const navConfig: NavConfig = {
   mainNav: [
-  {title: '当院について', href: '#'},
-  {title: '初診の方へ', href: '#'},
-  {title: '診療内容', href: '#'},
-  {title: '院内紹介', href: '#'},
-  {title: 'アクセス', href: '#'},
-  {title: 'よくある質問', href: '#'},
-]
-}
-
+    { label: 'ホーム', href: '/' },
+    { label: '当院について', href: '/about' },
+    { label: '診療内容', href: '/services' },
+    { label: 'お知らせ', href: '/news' },
+    { label: 'アクセス', href: '/access' },
+    { label: 'お問い合わせ', href: '/contact' },
+  ],
+};
