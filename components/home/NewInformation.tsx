@@ -66,35 +66,23 @@ interface NewInfoProps {
 }
 
 const NewInformation: React.FC<NewInfoProps> = ({ items }) => (
-  <section className="py-16 bg-gray-100">
-    <div className="container mx-auto px-4 max-w-6xl">
-      <h2 className="text-4xl font-bold text-center mb-4">NEWS&COLUMN</h2>
-      <p className="text-center mb-8 text-gray-600">当クリニックからのお知らせ</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {items.map((item, index) => (
-          <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
-            <div className="relative h-48">
-              <Image
-                src={item.imagePath}
-                alt={item.content}
-                layout="fill"
-                objectFit="cover"
-              />
-              <div className="absolute bottom-0 left-0 bg-blue-400 text-white px-3 py-1">
-                {item.type}
-              </div>
-            </div>
-            <div className="p-4">
-              <p className="text-gray-600 text-sm mb-2">{item.date}</p>
-              <p className="text-sm">{item.content}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="text-center mt-10">
-        <Button className="bg-blue-400 text-white hover:bg-blue-500 transition-colors">
-          お知らせ&コラム一覧へ →
+  <section className="py-16 px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto p-6 border border-green-700 border-gray-300  max-w-6xl">
+      <div className="flex mb-8 items-center justify-between">
+        <p className="text-left text-gray-600">お知らせ</p>
+        <Button className="bg-green-700 h-6 p-2 text-white hover:bg-green-800 transition-colors">
+          一覧へ＞
         </Button>
+      </div>
+      <div className="grid grid-cols-1 gap-6">
+        <div className="flex flex-col divide-y divide-gray-300 border-t border-b border-gray-300">
+          {items.map((item, index) => (
+            <div key={index} className="flex flex-row gap-8 py-4">
+              <p className="text-gray-600 mb-2">{item.date}</p>
+              <p className="">{item.content}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

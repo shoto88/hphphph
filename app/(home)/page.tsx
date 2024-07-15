@@ -7,6 +7,7 @@ import { newInfoConfig } from '@/config/newInfo';
 import { servicesConfig } from '@/config/services';
 import MainVisualWithSidebar from '@/components/home/MainContent';
 import ReservationAndAccess from '@/components/home/ReservationAndAccess';
+import Test from '@/components/home/test';
 
 
 const HomePage = () => {
@@ -17,6 +18,7 @@ const HomePage = () => {
       <ReservationAndAccess />
       <NewInformation items={newInfoConfig.infoItem} />
       <MenuSection items={servicesConfig.serviceCategory} />
+      <Test />
       <Access />
     </>
   );

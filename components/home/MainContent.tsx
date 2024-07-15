@@ -29,6 +29,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, FileText, Info } from 'lucide-react';
+import Link from 'next/link';
 
 const MainVisualWithSidebar: React.FC = () => {
   return (
@@ -56,23 +57,23 @@ const MainVisualWithSidebar: React.FC = () => {
       </div>
 
       {/* 固定サイドバー */}
-      <div className="fixed right-4 top-1/3 flex flex-col space-y-6 z-50">
-        <Button className="bg-gray-800 text-white w-28 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
+      <div className="fixed flex bottom-0 left-1/2 transform -translate-x-1/2 flex-row space-x-0 z-50">
+        <Link href="tel:045-901-2232" className="bg-gray-800/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
           <Phone className="w-5 h-5 mr-2" />
           <span>045-901-2232</span>
-        </Button>
-        <Button className="bg-green-500 text-white w-28 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
+        </Link>
+        <Link href="https://line.me/RxqvKjq" className="bg-green-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
           <MessageCircle className="w-5 h-5 mr-2" />
           <span>LINE公式</span>
-        </Button>
-        <Button className="bg-blue-500 text-white w-28 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
+        </Link>
+        <Link href="/web-consultation" className="bg-blue-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
           <FileText className="w-5 h-5 mr-2" />
           <span>WEB問診票</span>
-        </Button>
-        <Button className="bg-orange-500 text-white w-28 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
+        </Link>
+        <Link href="/first-visit" className="bg-orange-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
           <Info className="w-5 h-5 mr-2" />
           <span>初診の方へ</span>
-        </Button>
+        </Link>
       </div>
 
     </div>

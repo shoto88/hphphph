@@ -99,8 +99,11 @@ const MenuSection: React.FC<MenuSectionProps> = ({ items }) => {
 
       {items.map((category, index) => (
         <div key={category.slug} className={`flex flex-col gap-4 md:flex-row items-center justify-between mb-16 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-          <div className={`w-full md:w-2/3 p-6 space-y-4 rounded-2xl ${index % 2 === 0 ? 'bg-blue-50' : 'bg-green-50'}`}>
+          <div className={`w-full p-6 space-y-4 rounded-2xl ${index % 2 === 0 ? 'bg-blue-50' : 'bg-green-50'}`}>
             <h3 className="text-3xl font-semibold text-gray-700 mb-6">{category.name}</h3>
+            <Link href={`/services/${category.slug}`} className="text-blue-600 hover:text-blue-800 transition-colors">
+              {category.name}の詳細へ →
+            </Link>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {category.services.map((service, serviceIndex) => {
                 const Icon = getIcon(serviceIndex);
@@ -119,17 +122,9 @@ const MenuSection: React.FC<MenuSectionProps> = ({ items }) => {
                 );
               })}
             </div>
-          </div>
-          <div className="w-full md:w-1/3 p-6">
-            <h4 className="text-2xl font-semibold mb-4">{category.name}について</h4>
-            <p className="mb-4">
-              {index % 2 === 0 
-                ? "保険診療では、様々な症状や疾患に対して、健康保険を使用して診療を受けることができます。専門医による丁寧な診断と治療を提供し、患者様の健康回復をサポートいたします。"
-                : "自由診療では、保険適用外の最新の治療法や美容医療など、より幅広い選択肢をご用意しています。個々のニーズに合わせたカスタマイズされた医療サービスを提供いたします。"}
-            </p>
-            <Link href={`/services/${category.slug}`} className="text-blue-600 hover:text-blue-800 transition-colors">
-              {category.name}の詳細へ →
-            </Link>
+            <div>
+              
+            </div>
           </div>
         </div>
       ))}
