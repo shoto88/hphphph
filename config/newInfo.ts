@@ -1,19 +1,30 @@
-import { NewInfoItem } from '@/types';
+import { NewInfoConfig } from '@/types';
 
-export const newInfoConfig: NewInfoItem[] = [
-  {
-    date: '2024.05.09',
-    type: 'お知らせ',
-    content: '5月からLINEで予約できるようになりました。診察を行う時間に合わせて来院し、スムーズに診察ができます。'
-  },
-  {
-    date: '2024.05.09',
-    type: '新着情報',
-    content: '5月は脱毛がお得。'
-  },
-  {
-    date: '2024.05.09',
-    type: 'ブログ',
-    content: 'アフターピルについて。'
-  }
-];
+export const newInfoConfig: NewInfoConfig = {
+  infoItem: [
+    {
+      date: '2024.7.12',
+      type: 'お知らせ',
+      content: '7月16日（火）の最終診療受付時間は17時となります',
+      imagePath: '/top.jpg'
+    },
+    {
+      date: '2024.5.28',
+      type: 'お知らせ',
+      content: '当院の公式LINEアカウント',
+      imagePath: '/top.jpg'
+    },
+    {
+      date: '2024.5.28',
+      type: 'お知らせ',
+      content: '6月1日から窓口の自己負担額が変わります',
+      imagePath: '/top.jpg'
+    },
+    {
+      date: '2024.4.2',
+      type: 'お知らせ',
+      content: '7月からの担当医変更のお知らせ',
+      imagePath: '/top.jpg'
+    }
+  ],
+};

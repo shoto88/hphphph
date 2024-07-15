@@ -1,11 +1,12 @@
-import { ServiceCategory } from '@/types';
+import { ServiceCategory, ServiceConfig } from '@/types';
 
-export const servicesConfig: ServiceCategory[] = [
-  {
+export const servicesConfig: ServiceConfig = {
+  serviceCategory: [
+    {
     name: '保険診療',
     slug: 'insurance',
     services: [
-      { name: 'Headache', slug: 'headache', description: '頭痛の診断と治療' },
+      { name: '頭痛', slug: 'headache', description: '頭痛の診断と治療' },
       { name: '婦人科', slug: 'gynecology', description: '婦人科の診療' },
       { name: '内科', slug: 'internal-medicine', description: '内科全般の診療' },
       { name: '漢方内科', slug: 'kampo-medicine', description: '漢方薬による治療' },
@@ -26,5 +27,7 @@ export const servicesConfig: ServiceCategory[] = [
       { name: '点滴 注射', slug: 'iv-injection', description: '各種点滴・注射治療' },
       { name: 'ED', slug: 'erectile-dysfunction', description: 'ED治療' },
     ]
-  }
-];
+    }
+  ],
+};
+

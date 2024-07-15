@@ -1,28 +1,39 @@
-export interface MenuItem {
+export type MenuItem = {
   label: string;
   href: string;
+  children?: MenuItem[];
 }
 
 
-export interface NavConfig {
+export type NavConfig ={
   mainNav: MenuItem[];
 }
 
-export interface ServiceItem {
+export type ServiceItem ={
   name: string;
   slug: string;
   description?: string;
   content?: string;
 }
 
-export interface ServiceCategory {
+export type ServiceCategory ={
   name: string;
   slug: string;
   services: ServiceItem[];
 }
 
-export interface NewInfoItem {
+export type NewInfoItem ={
   date: string;
   type: string;
   content: string;
+  imagePath:string;
 }
+
+export type NewInfoConfig = {
+  infoItem: NewInfoItem[];
+}
+
+export type ServiceConfig = {
+  serviceCategory: ServiceCategory[];
+}
+
