@@ -30,16 +30,50 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, FileText, Info } from 'lucide-react';
 import Link from 'next/link';
+import { VariantProps, cva } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+
+const sidebarLinkVariants = cva(
+  "text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3",
+  {
+    variants: {
+      variant: {
+        phone: "bg-gray-800/90",
+        line: "bg-green-500/90",
+        webConsultation: "bg-blue-500/90",
+        firstVisit: "bg-orange-500/90",
+      },
+    },
+    defaultVariants: {
+      variant: "phone",
+    },
+  }
+)
+
+interface SidebarLinkProps extends React.ComponentPropsWithoutRef<typeof Link> , VariantProps<typeof sidebarLinkVariants> {
+  icon: React.ReactNode;
+  label: string;
+}
+
+const SidebarLink: React.FC<SidebarLinkProps> = ({className, variant, icon, label, ...props}) => (
+  <Link className={cn(sidebarLinkVariants({variant, className}))} {...props}>
+    {icon}
+    <span>{label}</span>
+  </Link>
+);
 
 const MainVisualWithSidebar: React.FC = () => {
   return (
     <div className="relative">
       {/* メインビジュアル */}
       <div className="w-full h-full object-cover relative">
-        <img
+        <Image
           src="/top.jpg"
           alt="クリニックの内部"
           className="w-full h-[700px] object-cover"
+          width={1920}
+          height={1080}
         />
         {/* テキストオーバーレイ */}
         <div className="absolute top-3/4 left-8 max-w-lg text-white">
@@ -58,22 +92,10 @@ const MainVisualWithSidebar: React.FC = () => {
 
       {/* 固定サイドバー */}
       <div className="fixed flex bottom-0 left-1/2 transform -translate-x-1/2 flex-row space-x-0 z-50">
-        <Link href="tel:045-901-2232" className="bg-gray-800/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
-          <Phone className="w-5 h-5 mr-2" />
-          <span>045-901-2232</span>
-        </Link>
-        <Link href="https://line.me/RxqvKjq" className="bg-green-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
-          <MessageCircle className="w-5 h-5 mr-2" />
-          <span>LINE公式</span>
-        </Link>
-        <Link href="/web-consultation" className="bg-blue-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
-          <FileText className="w-5 h-5 mr-2" />
-          <span>WEB問診票</span>
-        </Link>
-        <Link href="/first-visit" className="bg-orange-500/90 text-white w-60 h-20 gap-2 flex flex-col items-center justify-start px-4 py-3">
-          <Info className="w-5 h-5 mr-2" />
-          <span>初診の方へ</span>
-        </Link>
+        <SidebarLink href="tel:045-901-2232" variant="phone" icon={<Phone className="w-5 h-5 mr-2" />} label="045-901-2232" />
+        <SidebarLink href="https://line.me/RxqvKjq" variant="line" icon={<MessageCircle className="w-5 h-5 mr-2" />} label="LINE公式" />
+        <SidebarLink href="/web-consultation" variant="webConsultation" icon={<FileText className="w-5 h-5 mr-2" />} label="WEB問診票" />
+        <SidebarLink href="/first-visit" variant="firstVisit" icon={<Info className="w-5 h-5 mr-2" />} label="初診の方へ" />
       </div>
 
     </div>
